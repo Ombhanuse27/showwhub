@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+
+    >
+
+    <!-- ScrollView wrapping the scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <!-- Top Horizontal ScrollView -->
+
+            <!-- ViewFlipper -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageButton
+                        android:id="@+id/im1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/movie_icon"
+                        android:onClick="clk1"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/im2"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/sports_icon"
+                        android:onClick="clk2"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/im3"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/plays_icon"
+                        android:onClick="clk3"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/im4"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/sports_icon"
+                        android:onClick="clk4"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/im5"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/sports_icon"
+                        android:scaleType="fitCenter" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <ViewFlipper
+                    android:id="@+id/flipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    app:shapeAppearance="@style/circular">
+
+                </ViewFlipper>
+
+            </LinearLayout>
+
+            <!-- Recommended Movies Section -->
+
+            <!-- Movies Horizontal ScrollView -->
+<!--            <HorizontalScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fillViewport="true">-->
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alk"
+                    android:text="Recommended Movies"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                    android:onClick="seeall"
+                    android:src="@drawable/seeall" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewMovies"
+                    android:layout_width="match_parent"
+
+                    android:scaleType="fitXY"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+
+
+            </LinearLayout>
+<!--            </HorizontalScrollView>-->
+
+            <!-- Explore Fun Activities Section -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ad1"
+                app:shapeAppearance="@style/circular" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alk"
+                    android:text="Explore Fun Activities"
+                    android:textColor="@color/black"
+                    android:textSize="22dp" />
+            </LinearLayout>
+
+            <!-- Activities Horizontal ScrollView -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act1"
+                            android:onClick="movie1"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Wet n Joy Waterpark" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act2"
+                            android:onClick="movie2"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Munjya" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act3"
+                            android:onClick="movie3"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Inside Out 2" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act4"
+                            android:onClick="movie4"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Mr. and Mrs. Mahi" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act5"
+                            android:onClick="movie5"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Chandu" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alk"
+                    android:text="Top Games And Sports Events"
+                    android:textColor="@color/black"
+                    android:textSize="22dp" />
+            </LinearLayout>
+
+            <!-- Activities Horizontal ScrollView -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/event1"
+                            android:onClick="movie1"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Wet n Joy Waterpark" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act2"
+                            android:onClick="movie2"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Munjya" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:src="@drawable/act3"
+                            android:onClick="movie3"
+                            android:scaleType="fitXY"
+                            app:shapeAppearance="@style/circular" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Inside Out 2" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView"/>
+
+    <!-- Bottom Navigation View -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FF6D00"
+        app:menu="@menu/main_menu"
+        app:itemIconTint="@drawable/bottom_nav_color_state"
+        app:itemTextColor="@drawable/bottom_nav_color_state"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

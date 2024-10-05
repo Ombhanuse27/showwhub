@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="294dp"
+        android:layout_height="181dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+
+        android:contentDescription="TODO"
+        android:src="@drawable/showhublogo" />
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="20dp"
+
+            android:id="@+id/cardView"
+            android:layout_below="@+id/logoImage"
+            android:background="@drawable/s1">
+
+            <LinearLayout
+                android:layout_width="349dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+
+                <EditText
+                    android:id="@+id/inputEmail"
+                    android:layout_width="265dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/logoImage"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/s1"
+                    android:drawableLeft="@drawable/baseline_attach_email_24"
+                    android:fontFamily="@font/alk"
+                    android:hint="   Email"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    tools:ignore="ObsoleteLayoutParam" />
+
+                <EditText
+                    android:id="@+id/inputPass"
+                    android:layout_width="265dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/inputEmail"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/s1"
+                    android:drawableLeft="@drawable/baseline_lock_24"
+                    android:fontFamily="@font/alk"
+                    android:hint="   Password"
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    tools:ignore="ObsoleteLayoutParam" />
+
+                <Button
+                    android:id="@+id/btn"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/inputPass"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="#FF80AB"
+
+                    android:onClick="login"
+                    android:text="Login"
+                    android:textColor="@color/white"
+
+                    android:textSize="30sp"
+                    app:cornerRadius="20dp" />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/alk"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="create new account ? click here"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+
+
+
+
+
+
+
+
+</RelativeLayout>

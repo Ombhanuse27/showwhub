@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">showwhub</string>
+
+    <string name="read_more">Read More</string>
+    <string name="read_less">Read Less</string>
+    <string name="recommended_movies">Recommended Movies</string>
+</resources>

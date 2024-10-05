@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".selectdt">
+
+    <!-- Date RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dateRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal" />
+
+    <!-- Time Selection -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/time_7_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="07:30 PM" />
+
+        <Button
+            android:id="@+id/time_10_45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10:45 PM"
+            android:layout_marginLeft="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

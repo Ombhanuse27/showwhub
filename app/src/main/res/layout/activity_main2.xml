@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <ImageView
+        android:id="@+id/logoimg"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/showhublogo" />
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/logoimg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/s1"
+        android:fontFamily="@font/alk"
+        android:hint="   Email"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/inputPass"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/inputEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/s1"
+        android:fontFamily="@font/alk"
+        android:hint="   New Password"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/confirmPass"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/inputPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/s1"
+        android:fontFamily="@font/alk"
+        android:hint="   Confirm Password"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/confirmPass"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="72dp"
+        android:backgroundTint="#2962FF"
+        android:fontFamily="@font/alk"
+        android:onClick="register"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/already"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/alk"
+        android:onClick="already"
+        android:text="Already have account? Click here"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+</RelativeLayout>
