@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Movie1">
+    tools:context=".Movie4">
 
     <ScrollView
         android:layout_width="0dp"
@@ -25,7 +25,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/poster1"
+                android:background="@drawable/poster4"
                 android:onClick="trailers"
                 app:shapeAppearanceOverlay="@style/circular" />
 
@@ -54,10 +54,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="2h 37m •
-Biography
+                android:text="2h 57m •
+Action
 ,
 Drama
+,
+Thriller
 • UA • 27 Sep, 2024 " />
 
             <TextView
@@ -73,7 +75,7 @@ Drama
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Dharamveer 2 carries on this saga, delving deeper into the life of the legendary leader Anand Dighe. Additionally, it provides a compelling perspective on contemporary politics and its connections to the past. " />
+                android:text="The film`s backdrop is centered around the far and forgotten coastal lands of India.The people,or rather the villains,in the film neither fear death nor god and there is no sense of humanity among them. Devara changes this scenario in his inimitable style." />
 
             <TextView
                 android:layout_width="match_parent"
@@ -91,7 +93,7 @@ Drama
 
                 android:scaleType="fitStart"
 
-                android:src="@drawable/cast1" />
+                android:src="@drawable/cast4" />
 
 
         </LinearLayout>

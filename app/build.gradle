@@ -36,6 +36,7 @@ dependencies {
     implementation libs.firebase.auth.v2110
     implementation libs.material
     implementation libs.firebase.database
+    implementation libs.firebase.firestore
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

@@ -35,7 +35,7 @@
             android:id="@+id/seatView"
             android:layout_width="100dp"
             android:layout_height="80dp"
-            android:background="@drawable/seat2"
+            android:background="@drawable/seat1"
             android:layout_below="@id/textViewTitle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp" />
@@ -53,14 +53,14 @@
                 android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="false"
+                android:checked="true"
                 android:text="1" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:text="2" />
 
             <RadioButton

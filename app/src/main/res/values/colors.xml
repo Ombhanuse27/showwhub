@@ -4,4 +4,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_bg">#daedfc</color>
     <color name="transparent">#00000000</color>
+    <color name="hotel_card_bg">#FFFFFF</color>
+    <color name="rating_bg">#3F51B5</color>
+
+    <color name="hotel_search_bg">#C8E1E1E1</color>
+    <color name="hotel_search_border">#BDBDBD</color>
+    <color name="gray">#E1C6C6C6</color>
+    <color name="calbtn">#0f93fe</color>
+
+    <color name="subtext">#202020</color>
+    <color name="account_title">#007359</color>
+    <color name="actionBarColor">#ED9E6A</color>
+    <color name="ripple_color">#FEDB71</color>
+    <color name="btn_bg">#FEDB71</color>
+    <!--    <color name="btn_bg">#FEF771</color>-->
+    <color name="border">#EEEEEE</color>
 </resources>

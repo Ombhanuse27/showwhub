@@ -1,11 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".selectdt">
+    tools:context=".selectdt"
+    android:background="@drawable/login_background">
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Select Date:"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
+        tools:ignore="HardcodedText" />
     <!-- Date RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dateRecyclerView"
@@ -15,25 +24,41 @@
         android:orientation="horizontal"
         android:scrollbars="horizontal" />
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Select Time:"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        tools:ignore="HardcodedText" />
+
+
     <!-- Time Selection -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/time_7_30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:textColor="@color/black"
             android:text="07:30 PM" />
 
         <Button
             android:id="@+id/time_10_45"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10:45 PM"
-            android:layout_marginLeft="16dp" />
+            android:backgroundTint="#FF8A80"
+            android:textColor="@color/black"
+            android:background="@drawable/button_border"
+            android:layout_marginLeft="16dp"
+            android:text="10:45 PM" />
 
     </LinearLayout>
 

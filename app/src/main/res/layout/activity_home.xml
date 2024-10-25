@@ -170,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alk"
-                    android:text="Explore Fun Activities"
+                    android:text="New Release Movies"
                     android:textColor="@color/black"
                     android:textSize="22dp" />
             </LinearLayout>
@@ -196,7 +196,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act1"
+                            android:src="@drawable/new1"
                             android:onClick="movie1"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -206,7 +206,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Wet n Joy Waterpark" />
+                            android:text="Dharmaveer 2" />
 
                     </LinearLayout>
 
@@ -219,7 +219,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act2"
+                            android:src="@drawable/new2"
                             android:onClick="movie2"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -229,7 +229,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Munjya" />
+                            android:text="Navra Maza Navsacha 2" />
 
                     </LinearLayout>
 
@@ -242,7 +242,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act3"
+                            android:src="@drawable/new3"
                             android:onClick="movie3"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -252,7 +252,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Inside Out 2" />
+                            android:text="Joker:Folie a Deux" />
 
                     </LinearLayout>
 
@@ -265,7 +265,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act4"
+                            android:src="@drawable/new4"
                             android:onClick="movie4"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -275,32 +275,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Mr. and Mrs. Mahi" />
+                            android:text="Devra Part 1" />
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="5dp">
 
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="140dp"
-                            android:layout_height="200dp"
-                            android:src="@drawable/act5"
-                            android:onClick="movie5"
-                            android:scaleType="fitXY"
-                            app:shapeAppearance="@style/circular" />
-
-                        <TextView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Chandu" />
-
-                    </LinearLayout>
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -316,12 +295,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alk"
-                    android:text="Top Games And Sports Events"
+                    android:text="Recently Blockbusters"
                     android:textColor="@color/black"
                     android:textSize="22dp" />
             </LinearLayout>
 
-            <!-- Activities Horizontal ScrollView -->
+            <!-- Recent Blockbuster Horizontal ScrollView -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -342,7 +321,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/event1"
+                            android:src="@drawable/movie1"
                             android:onClick="movie1"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -352,7 +331,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Wet n Joy Waterpark" />
+                            android:text="Chandu Champian" />
 
                     </LinearLayout>
 
@@ -365,7 +344,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act2"
+                            android:src="@drawable/movie2"
                             android:onClick="movie2"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />
@@ -388,7 +367,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="140dp"
                             android:layout_height="200dp"
-                            android:src="@drawable/act3"
+                            android:src="@drawable/movie3"
                             android:onClick="movie3"
                             android:scaleType="fitXY"
                             app:shapeAppearance="@style/circular" />

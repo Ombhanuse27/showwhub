@@ -33,6 +33,8 @@
             android:name=".Movie1"
             android:exported="false"
             />
+        <activity android:name=".Movie2"
+            android:exported="false"/>
 
         <activity
             android:name=".Movie3"
@@ -61,6 +63,7 @@
             android:exported="false"/>
         <activity android:name="DateAdapter"
             android:exported="false"/>
+
 
         <activity
             android:name=".MainActivity"

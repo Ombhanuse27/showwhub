@@ -1,6 +1,7 @@
 package com.example.showwhub;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,11 +27,19 @@ public class SeatSelectionFragment extends AppCompatActivity {
     RadioGroup radioGroupSeats;
     private Button buttonSelectSeats;
     private int seatPrice = 200; // Default price for PREMIUM seats
+    private String selectedTime; // Variable to hold the selected time
+    private String selectedDate; // Variable to hold the selected date
+    private String movieName; // Variable to hold the movie name
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seatselection);
+
+        // Get the selected time, date, and movie name from the Intent
+        selectedTime = getIntent().getStringExtra("selected_time");
+        selectedDate = getIntent().getStringExtra("selected_date");
+        movieName = getIntent().getStringExtra("movie_name"); // Retrieve the movie name
 
         seatView = findViewById(R.id.seatView);
         radioGroupSeats = findViewById(R.id.radioGroupSeats);
@@ -42,36 +51,33 @@ public class SeatSelectionFragment extends AppCompatActivity {
         radioButton6 = findViewById(R.id.radioButton6);
         buttonSelectSeats = findViewById(R.id.buttonSelectSeats);
 
-        radioGroupSeats.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int imageResId = R.drawable.seat2; // Default image resource
-                int numberOfSeats = 1;
+        radioGroupSeats.setOnCheckedChangeListener((group, checkedId) -> {
+            int imageResId = R.drawable.seat2; // Default image resource
+            int numberOfSeats = 1;
 
-                if (checkedId == R.id.radioButton1) {
-                    imageResId = R.drawable.seat1;
-                    numberOfSeats = 1;
-                } else if (checkedId == R.id.radioButton2) {
-                    imageResId = R.drawable.seat2;
-                    numberOfSeats = 2;
-                } else if (checkedId == R.id.radioButton3) {
-                    imageResId = R.drawable.seat3;
-                    numberOfSeats = 3;
-                } else if (checkedId == R.id.radioButton4) {
-                    imageResId = R.drawable.seat4;
-                    numberOfSeats = 4;
-                } else if (checkedId == R.id.radioButton5) {
-                    imageResId = R.drawable.seat5;
-                    numberOfSeats = 5;
-                } else if (checkedId == R.id.radioButton6) {
-                    imageResId = R.drawable.seat6;
-                    numberOfSeats = 6;
-                }
-
-                seatView.setImageResource(imageResId);
-                updateButtonText(numberOfSeats);
+            // Set the image and number of seats based on selection
+            if (checkedId == R.id.radioButton1) {
+                imageResId = R.drawable.seat1;
+                numberOfSeats = 1;
+            } else if (checkedId == R.id.radioButton2) {
+                imageResId = R.drawable.seat2;
+                numberOfSeats = 2;
+            } else if (checkedId == R.id.radioButton3) {
+                imageResId = R.drawable.seat3;
+                numberOfSeats = 3;
+            } else if (checkedId == R.id.radioButton4) {
+                imageResId = R.drawable.seat4;
+                numberOfSeats = 4;
+            } else if (checkedId == R.id.radioButton5) {
+                imageResId = R.drawable.seat5;
+                numberOfSeats = 5;
+            } else if (checkedId == R.id.radioButton6) {
+                imageResId = R.drawable.seat6;
+                numberOfSeats = 6;
             }
+
+            seatView.setImageResource(imageResId);
+            updateButtonText(numberOfSeats);
         });
     }
 
@@ -85,6 +91,7 @@ public class SeatSelectionFragment extends AppCompatActivity {
         int selectedSeats = radioGroupSeats.getCheckedRadioButtonId();
         int numberOfSeats = 1;
 
+        // Determine the number of seats selected
         if (selectedSeats == R.id.radioButton1) {
             numberOfSeats = 1;
         } else if (selectedSeats == R.id.radioButton2) {
@@ -103,7 +110,6 @@ public class SeatSelectionFragment extends AppCompatActivity {
         Toast.makeText(this, "Total Amount: ₹" + totalAmount, Toast.LENGTH_SHORT).show();
 
         // Add booking data to Firebase
-        String movieName = "Dharmaveer 2"; // Replace with actual movie name
         String bookingDate = getCurrentDateTime();
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -111,15 +117,25 @@ public class SeatSelectionFragment extends AppCompatActivity {
             String userId = currentUser.getUid();
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-            Booking booking = new Booking(bookingDate, movieName, "", numberOfSeats, totalAmount);
-            databaseReference.child("bookings").child(userId).setValue(booking)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(this, "Booking Successful", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, "Booking Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            // Create booking object including the selected time, date, and movie name
+            Booking booking = new Booking(bookingDate, movieName, selectedTime, numberOfSeats, totalAmount);
+
+            // Generate a unique key for each booking
+            String bookingKey = databaseReference.child("bookings").child(userId).push().getKey();
+
+            // Save booking under the user's ID and the unique booking key
+            if (bookingKey != null) {
+                databaseReference.child("bookings").child(userId).child(bookingKey).setValue(booking)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(this, "Booking Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SeatSelectionFragment.this, HomeActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(this, "Booking Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         }
     }
 

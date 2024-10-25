@@ -25,7 +25,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/chandu_bg"
+                android:background="@drawable/poster3"
                 android:onClick="trailers"
                 app:shapeAppearanceOverlay="@style/circular" />
 
@@ -54,7 +54,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="2h 23m • Biography , Drama , Sports • UA • 14 Jun, 2024  " />
+                android:text="2h 30m •
+Drama
+,
+Suspense
+,
+Thriller
+• A • 2 Oct, 2024 " />
 
             <TextView
                 android:layout_width="match_parent"
@@ -69,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text=" This is an unbelievable tale of a man who faced one adversary after another with an undying spirit. His unwavering zeal and never-give-up attitude led to the creation of history. This is the story of Chandu Champion!" />
+                android:text="Joker: Folie A Deux finds Arthur Fleck institutionalized at Arkham awaiting trial for his crimes as Joker. While struggling with his dual identity, Arthur not only stumbles upon true love, but also finds the music that`s always been inside him." />
 
             <TextView
                 android:layout_width="match_parent"
@@ -87,7 +93,7 @@
 
                 android:scaleType="fitStart"
 
-                android:src="@drawable/cast2" />
+                android:src="@drawable/cast3" />
 
 
         </LinearLayout>
@@ -102,6 +108,7 @@
         android:text="Book tickets"
         android:textColor="@color/white"
         android:textSize="20dp"
+        android:onClick="bookTicket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

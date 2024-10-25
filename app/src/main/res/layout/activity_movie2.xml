@@ -4,74 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".Movie2">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="15dp"
-        android:background="@drawable/movie1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toTopOf="@+id/bookBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="10dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Movie-name"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366"
-        tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp"
+            tools:ignore="ScrollViewSize">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="15dp"
-        android:text="Movie-description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457"
-        tools:ignore="MissingConstraints" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/poster2"
+                android:onClick="trailers"
+                app:shapeAppearanceOverlay="@style/circular" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_margin="15dp"
-        android:text="Movie-rating"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57"
-        tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/twod"
+                    android:text="Movie-name" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/hindi"
+                    android:text="Movie-name" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="2h 23m •
+Comedy
+,
+Drama
+,
+Family
+• U • 20 Sep, 2024 " />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="About This Movie "
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Bhakti and Vacky are on a journey to seek blessings at Ganpati Pule because their daughter Shraddha where she makes an unusual and hilarious vow and forces her fiance to fulfill as a condition to marry her. Will they be able to fulfill their vow?" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:text="Movie-rating"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="135dp"
+                android:layout_marginTop="20dp"
+
+
+                android:scaleType="fitStart"
+
+                android:src="@drawable/cast2" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
+        android:id="@+id/bookBtn"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="10dp"
-        android:text="Book Tickets"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_button_bg"
+        android:text="Book tickets"
+        android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
+        android:onClick="bookTicket"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

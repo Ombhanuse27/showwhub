@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".MainActivity2"
+    android:background="@drawable/login_background">
 
     <ImageView
         android:id="@+id/logoimg"
@@ -12,30 +13,55 @@
         android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/showhublogo" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+
+        app:cardElevation="20dp"
+
+        android:id="@+id/cardView"
+        android:layout_below="@+id/logoimg"
+        android:background="@drawable/s1">
+
+    <LinearLayout
+        android:layout_width="349dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+
+        android:padding="24dp">
 
     <EditText
         android:id="@+id/inputEmail"
-        android:layout_width="320dp"
+        android:layout_width="270dp"
         android:layout_height="50dp"
         android:layout_below="@id/logoimg"
+        android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/baseline_attach_email_24"
         android:layout_marginTop="5dp"
         android:background="@drawable/s1"
         android:fontFamily="@font/alk"
+        android:padding="10dp"
         android:hint="   Email"
         android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/inputPass"
-        android:layout_width="320dp"
+        android:layout_width="270dp"
+        android:layout_marginLeft="10dp"
         android:layout_height="50dp"
+        android:padding="10dp"
         android:layout_below="@id/inputEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_lock_24"
         android:background="@drawable/s1"
         android:fontFamily="@font/alk"
         android:hint="   New Password"
@@ -43,44 +69,55 @@
 
     <EditText
         android:id="@+id/confirmPass"
-        android:layout_width="320dp"
+        android:layout_width="270dp"
         android:layout_height="50dp"
         android:layout_below="@id/inputPass"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/baseline_lock_24"
         android:layout_marginTop="20dp"
         android:background="@drawable/s1"
         android:fontFamily="@font/alk"
         android:hint="   Confirm Password"
         android:textColor="@color/black" />
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/confirmPass"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="72dp"
-        android:backgroundTint="#2962FF"
-        android:fontFamily="@font/alk"
-        android:onClick="register"
-        android:text="Register"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/confirmPass"
+            android:layout_alignParentEnd="true"
 
-    <TextView
-        android:id="@+id/already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="26dp"
-        android:fontFamily="@font/alk"
-        android:onClick="already"
-        android:text="Already have account? Click here"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+
+
+            android:backgroundTint="#FF80AB"
+            android:fontFamily="@font/alk"
+            android:onClick="register"
+            android:text="Register"
+
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <TextView-->
+<!--        android:id="@+id/already"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/cardView"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_marginStart="64dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:fontFamily="@font/alk"-->
+<!--        android:onClick="already"-->
+<!--        android:text="Already have account? Click here"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        tools:ignore="NotSibling" />-->
 
 </RelativeLayout>

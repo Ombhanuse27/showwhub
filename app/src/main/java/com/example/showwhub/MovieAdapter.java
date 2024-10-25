@@ -15,15 +15,18 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-
     private final Context context;
     private final List<Movie> movieList;
-    private final OnMovieClickListener onMovieClickListener;
+    private final OnMovieClickListener listener; // Create a listener interface
 
-    public MovieAdapter(Context context, List<Movie> movieList, OnMovieClickListener onMovieClickListener) {
+    public interface OnMovieClickListener {
+        void onMovieClick(Movie movie);
+    }
+
+    public MovieAdapter(Context context, List<Movie> movieList, OnMovieClickListener listener) {
         this.context = context;
         this.movieList = movieList;
-        this.onMovieClickListener = onMovieClickListener;
+        this.listener = listener; // Initialize the listener
     }
 
     @NonNull
@@ -36,11 +39,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
-        holder.movieName.setText(movie.getMovieName());
-        Picasso.get().load(movie.getImageURL()).into(holder.movieImage);
+        holder.tvMovieName.setText(movie.getMovieName());
+        Picasso.get().load(movie.getImageURL()).into(holder.ivMoviePoster);
 
-        // Set click listener for each movie item
-        holder.itemView.setOnClickListener(v -> onMovieClickListener.onMovieClick(movie));
+        // Set OnClickListener on the item view
+        holder.itemView.setOnClickListener(v -> listener.onMovieClick(movie)); // Trigger the listener
     }
 
     @Override
@@ -49,17 +52,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        TextView movieName;
-        ImageView movieImage;
+        ImageView ivMoviePoster;
+        TextView tvMovieName;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
-            movieName = itemView.findViewById(R.id.textViewMovieName);
-            movieImage = itemView.findViewById(R.id.imageViewMovie);
+            ivMoviePoster = itemView.findViewById(R.id.imageViewMovie);
+            tvMovieName = itemView.findViewById(R.id.textViewMovieName);
         }
-    }
-
-    public interface OnMovieClickListener {
-        void onMovieClick(Movie movie);
     }
 }

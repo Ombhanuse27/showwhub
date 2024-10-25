@@ -1,22 +1,62 @@
 package com.example.showwhub;
 
 public class Booking {
-    private String booking_date;
-    private String movie_name;
-    private String movie_time; // Optional, set later
-    private int number_of_tickets;
-    private int total_amount;
+    private String bookingDate;
+    private String movieName;
+    private String movieTime;
+    private int numberOfTickets;
+    private int totalAmount;
 
-    // Default constructor required for calls to DataSnapshot.getValue(Booking.class)
-    public Booking() { }
-
-    public Booking(String booking_date, String movie_name, String movie_time, int number_of_tickets, int total_amount) {
-        this.booking_date = booking_date;
-        this.movie_name = movie_name;
-        this.movie_time = movie_time;
-        this.number_of_tickets = number_of_tickets;
-        this.total_amount = total_amount;
+    // No-argument constructor required for Firebase
+    public Booking() {
     }
 
-    // Getters and Setters (if needed)
+    public Booking(String bookingDate, String movieName, String movieTime, int numberOfTickets, int totalAmount) {
+        this.bookingDate = bookingDate;
+        this.movieName = movieName;
+        this.movieTime = movieTime;
+        this.numberOfTickets = numberOfTickets;
+        this.totalAmount = totalAmount;
+    }
+
+    // Getters and Setters
+    public String getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getMovieTime() {
+        return movieTime;
+    }
+
+    public void setMovieTime(String movieTime) {
+        this.movieTime = movieTime;
+    }
+
+    public int getNumberOfTickets() {
+        return numberOfTickets;
+    }
+
+    public void setNumberOfTickets(int numberOfTickets) {
+        this.numberOfTickets = numberOfTickets;
+    }
+
+    public int getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 }

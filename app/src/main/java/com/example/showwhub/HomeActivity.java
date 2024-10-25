@@ -1,78 +1,185 @@
 package com.example.showwhub;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import static androidx.core.content.ContextCompat.startActivity;
+import static com.example.showwhub.R.id.*;
 
-import androidx.annotation.NonNull;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ViewFlipper;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-    private final Context context;
-    private final List<Movie> movieList;
+public class HomeActivity extends AppCompatActivity implements MovieAdapter.OnMovieClickListener { // Implement the listener
 
-    public MovieAdapter(Context context, List<Movie> movieList) {
-        this.context = context;
-        this.movieList = movieList;
-    }
+    ViewFlipper flipper;
+    ImageButton im1, im2, im3, im4;
+    private RecyclerView recyclerViewMovies;
+    private MovieAdapter movieAdapter;
+    private List<Movie> movieList;
 
-    @NonNull
+    @SuppressLint("MissingInflatedId")
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
-        return new MovieViewHolder(view);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
 
-    @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        Movie movie = movieList.get(position);
-        holder.tvMovieName.setText(movie.getMovieName());
-        Picasso.get().load(movie.getImageURL()).into(holder.ivMoviePoster);
-
-        // Set an OnClickListener for the item
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent;
-            // Navigate to different activities based on movie name
-            switch (movie.getMovieName()) {
-                case "Movie 1":
-                    intent = new Intent(context, Movie1.class);
-                    break;
-                case "Movie 2":
-                    intent = new Intent(context, Movie2.class);
-                    break;
-                case "Movie 3":
-                    intent = new Intent(context, Movie3.class);
-                    break;
-                // Add more cases as needed for additional movies
-                default:
-                    intent = new Intent(context, DefaultMovieActivity.class); // Default activity
-                    break;
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.history) {
+                    finish();
+                    startActivity(new Intent(HomeActivity.this, historyPage.class));
+                    return true;
+                } else if (itemId == R.id.profile) {
+                    finish();
+                    startActivity(new Intent(HomeActivity.this, ProfileFragment.class));
+                    return true;
+                }
+                return false;
             }
-            context.startActivity(intent);
+        });
+
+        // Set default selection
+        if (savedInstanceState == null) {
+            bottomNavigationView.setSelectedItemId(R.id.home);
+        }
+
+        im1 = findViewById(R.id.im1);
+        im2 = findViewById(R.id.im2);
+        im3 = findViewById(R.id.im3);
+        im4 = findViewById(R.id.im4);
+
+        flipper = findViewById(R.id.flipper);
+
+        int imgArray[] = {R.drawable.img_1, R.drawable.img_2, R.drawable.img_3, R.drawable.img_4};
+        for (int img : imgArray) {
+            showImg(img);
+        }
+
+        // Setup RecyclerView
+        recyclerViewMovies = findViewById(R.id.recyclerViewMovies);
+        recyclerViewMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        movieList = new ArrayList<>();
+        movieAdapter = new MovieAdapter(this, movieList, this); // Pass the listener
+        recyclerViewMovies.setAdapter(movieAdapter);
+
+        fetchMoviesFromFirebase();
+    }
+
+    private void fetchMoviesFromFirebase() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("movies");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                movieList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String movieName = dataSnapshot.child("movie_name").getValue(String.class);
+                    String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
+
+                    Log.d("Firebase", "Movie Name from snapshot: " + movieName);
+                    Log.d("Firebase", "Image URL from snapshot: " + imageURL);
+                    Movie movie = new Movie(movieName, imageURL);
+                    movieList.add(movie);
+                }
+                movieAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle database error
+            }
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return movieList.size();
+    public void showImg(int img) {
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(img);
+
+        flipper.addView(imageView);
+        flipper.setFlipInterval(3000);
+        flipper.setAutoStart(true);
+
+        flipper.setInAnimation(this, android.R.anim.slide_in_left);
+        flipper.setOutAnimation(this, android.R.anim.slide_out_right);
     }
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivMoviePoster;
-        TextView tvMovieName;
+    @Override
+    public void onMovieClick(Movie movie) {
+        Intent intent = new Intent(HomeActivity.this, Movie3.class); // Replace with your detail activity
+        intent.putExtra("MOVIE_NAME", movie.getMovieName());
+        intent.putExtra("IMAGE_URL", movie.getImageURL());
+        startActivity(intent);
+    }
 
-        public MovieViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ivMoviePoster = itemView.findViewById(R.id.imageViewMovie);
-            tvMovieName = itemView.findViewById(R.id.textViewMovieName);
-        }
+    public void movie1(View view) {
+        Intent intent = new Intent(HomeActivity.this, Movie1.class);
+        startActivity(intent);
+    }
+
+    public void movie2(View view) {
+        Intent intent = new Intent(HomeActivity.this, Movie2.class);
+        startActivity(intent);
+    }
+
+    public void movie3(View view) {
+        Intent intent = new Intent(HomeActivity.this, Movie3.class);
+        startActivity(intent);
+    }
+
+    public void movie4(View view) {
+        Intent intent = new Intent(HomeActivity.this, Movie4.class);
+        startActivity(intent);
+    }
+
+    public void clk1(View view) {
+        Animation am = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hyper);
+        im1.startAnimation(am);
+    }
+
+    public void clk2(View view) {
+        Animation am = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hyper);
+        im2.startAnimation(am);
+    }
+
+    public void clk3(View view) {
+        Animation am = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hyper);
+        im3.startAnimation(am);
+    }
+
+    public void clk4(View view) {
+        Animation am = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hyper);
+        im4.startAnimation(am);
+    }
+
+    public void seeall(View view) {
+        Intent intent = new Intent(HomeActivity.this, SeeAll.class);
+        startActivity(intent);
     }
 }
