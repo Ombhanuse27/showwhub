@@ -60,6 +60,8 @@ public class MainActivity2 extends AppCompatActivity {
         String pass = inputPass.getText().toString().trim();
         String confirm = confirmPass.getText().toString().trim();
 
+        String adminEmail = "admin@showwhub.com"; // You can set your desired admin email here
+
         if (!email.matches(emailPattern)) {
             inputEmail.setError("Enter a correct email");
         } else if (pass.isEmpty() || pass.length() < 6) {
@@ -77,8 +79,14 @@ public class MainActivity2 extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     progressDialog.dismiss();
                     if (task.isSuccessful()) {
-                        sendUserToNextActivity();
-                        Toast.makeText(MainActivity2.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        if (email.equals(adminEmail)) {
+                            Toast.makeText(MainActivity2.this, "Admin Registered", Toast.LENGTH_SHORT).show();
+                            // Navigate to admin-specific activity if needed
+                            sendUserToAdminActivity();
+                        } else {
+                            Toast.makeText(MainActivity2.this, "User Registered", Toast.LENGTH_SHORT).show();
+                            sendUserToNextActivity();
+                        }
                     } else {
                         Toast.makeText(MainActivity2.this, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -86,6 +94,14 @@ public class MainActivity2 extends AppCompatActivity {
             });
         }
     }
+
+    private void sendUserToAdminActivity() {
+        Intent intent = new Intent(MainActivity2.this, Admin_Dashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
 
     // Method to navigate to the next activity
     private void sendUserToNextActivity() {

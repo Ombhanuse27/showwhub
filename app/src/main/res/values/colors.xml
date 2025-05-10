@@ -6,6 +6,7 @@
     <color name="transparent">#00000000</color>
     <color name="hotel_card_bg">#FFFFFF</color>
     <color name="rating_bg">#3F51B5</color>
+    <color name="light_gray">#E0E0E0</color>
 
     <color name="hotel_search_bg">#C8E1E1E1</color>
     <color name="hotel_search_border">#BDBDBD</color>

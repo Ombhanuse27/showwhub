@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class SeeAll extends AppCompatActivity {
 
     private RecyclerView bookRecyclerView;
-    private BookAdapter bookAdapter;
+
     private ArrayList<Booking> bookingList;
 
     @Override

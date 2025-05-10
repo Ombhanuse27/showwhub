@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,67 +15,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Showwhub"
-        tools:targetApi="31">
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false"
-            />
-        <activity
-            android:name=".Movie"
-            android:exported="false"
-            />
+        tools:targetApi="31"
+        tools:replace="android:fullBackupContent">
 
-        <activity
-            android:name=".MovieAdapter"
-            android:exported="false"
-            />
-        <activity
-            android:name=".Movie1"
-            android:exported="false"
-            />
-        <activity android:name=".Movie2"
-            android:exported="false"/>
-
-        <activity
-            android:name=".Movie3"
-            android:exported="false"
-            />
-        <activity
-            android:name=".Movie4"
-            android:exported="false"
-            />
-        <activity
-            android:name=".SeatSelectionFragment"
-            android:exported="false"
-            />
-        <activity
-            android:name=".SeeAll"
-            android:exported="false"
-            />
-        <activity
-            android:name=".historyPage"
-            android:exported="false"
-            />
-        <activity
-            android:name=".ProfileFragment"
-            android:exported="false"/>
-        <activity android:name=".selectdt"
-            android:exported="false"/>
-        <activity android:name="DateAdapter"
-            android:exported="false"/>
-
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            >
+        <activity android:name=".MainActivity2" android:exported="false" />
+        <activity android:name=".HomeActivity" android:exported="false" />
+        <activity android:name=".Movie" android:exported="false" />
+        <activity android:name=".Booking" android:exported="false" />
+        <activity android:name=".MovieAdapter" android:exported="false" />
+        <activity android:name=".MovieDetails" android:exported="false" />
+        <activity android:name=".Movie2" android:exported="false" />
+        <activity android:name=".Movie3" android:exported="false" />
+        <activity android:name=".Movie4" android:exported="false" />
+        <activity android:name=".selectdate" android:exported="false" />
+        <activity android:name=".DummyUPIPayment" android:exported="false" />
+        <activity android:name=".SeatSelectionFragment" android:exported="false" />
+        <activity android:name=".SeeAll" android:exported="false" />
+        <activity android:name=".DeleteMovie" android:exported="false" />
+        <activity android:name=".historyPage" android:exported="false" />
+        <activity android:name=".FeedbackListActivity" android:exported="false" />
+        <activity android:name=".FeedbackActivity" android:exported="false" />
+        <activity android:name=".ProfileFragment" android:exported="false" />
+        <activity android:name=".selectdt" android:exported="false" />
+        <activity android:name="DateAdapter" android:exported="false" />
+        <activity android:name=".Admin_Dashboard" android:exported="false" />
+        <activity android:name=".AddMovie" android:exported="false" />
+        <activity android:name=".Bookings" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

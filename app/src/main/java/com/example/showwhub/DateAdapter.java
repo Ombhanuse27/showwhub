@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> {
@@ -40,7 +42,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
 
         // Update the selected position
         // Highlight selected date by changing background color
-        holder.itemView.setBackgroundColor(position == selectedPosition ? Color.LTGRAY : Color.WHITE);
+        holder.itemView.setBackgroundColor(position == selectedPosition ? Color.parseColor("#D3D3D3") : Color.WHITE); // Use a light gray color
 
         // Set click listener on each date item
         holder.itemView.setOnClickListener(v -> {

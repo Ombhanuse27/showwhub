@@ -1,4 +1,5 @@
 package com.example.showwhub;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,29 +28,23 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser mUser;
     ProgressDialog progressDialog;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String adminEmail = "admin@showwhub.com"; // Define your admin email here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Firebase
-        //FirebaseApp.initializeApp(this);
         progressDialog = new ProgressDialog(this);
-        // Initialize FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
-        mUser=mAuth.getCurrentUser();
+        mUser = mAuth.getCurrentUser();
 
         Log.d("MyApplication", "Firebase initialized");
 
-        // Bind UI elements
         create = findViewById(R.id.create);
         inputEmail = findViewById(R.id.inputEmail);
         inputPass = findViewById(R.id.inputPass);
 
-
-
-        // Set onClickListener for create TextView
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Method to handle login button click
     public void login(View view) {
         performLogin();
     }
 
-    // Method to perform login
     private void performLogin() {
         String email = inputEmail.getText().toString().trim();
         String pass = inputPass.getText().toString().trim();
@@ -74,12 +67,24 @@ public class MainActivity extends AppCompatActivity {
         } else if (pass.isEmpty() || pass.length() < 6) {
             inputPass.setError("Enter valid password");
         } else {
+            progressDialog.setMessage("Logging in...");
+            progressDialog.setTitle("Login");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressDialog.dismiss();
                     if (task.isSuccessful()) {
-                        sendUserToNextActivity();
                         Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                        if (email.equals(adminEmail)) {
+                            sendUserToAdminActivity();
+                        } else {
+                            sendUserToNextActivity();
+                        }
+
                     } else {
                         Toast.makeText(MainActivity.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -88,9 +93,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Method to navigate to the next activity
     private void sendUserToNextActivity() {
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void sendUserToAdminActivity() {
+        Intent intent = new Intent(MainActivity.this, Admin_Dashboard.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

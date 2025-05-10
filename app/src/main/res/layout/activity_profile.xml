@@ -4,41 +4,38 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:background="#F9F9F9">
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/app_bg"
-        tools:context=".MyAccount">
-
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
+            <!-- Profile Info Card -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="16dp">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="20dp"
+                    android:gravity="center_horizontal">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profileImage"
@@ -46,215 +43,156 @@
                         android:layout_height="120dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/blank_profile"
+                        android:onClick="selectProfileImage"
                         app:shapeAppearanceOverlay="@style/round" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/linearLayout9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="15dp"
-
-                    >
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/account_title"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="GENERAL DETAILS" />
-
-                    <EditText
-                        android:id="@+id/acc_name_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
+                        android:layout_marginTop="16dp"
                         android:hint="Full Name"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="#FF6D00"
+                        app:endIconMode="clear_text">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:id="@+id/acc_dob_edt"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/updateName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginVertical="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/borderbtn"
-                            android:drawableLeft="@drawable/calendar_icon"
-                            android:drawablePadding="10dp"
-                            android:paddingStart="20dp"
-                            android:paddingTop="18dp"
-                            android:paddingEnd="20dp"
-                            android:paddingBottom="14dp"
-                            android:textSize="15dp"
-                            android:text="Date of Birth"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                            android:textStyle="bold" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Email"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="#FF6D00"
+                        app:endIconMode="clear_text">
 
-                        <EditText
-                            android:id="@+id/acc_gender_edt"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/updateEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginVertical="5dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/custom_edit_text"
-                            android:ems="10"
-                            android:hint="Gender"
-                            android:inputType="text"
-                            android:paddingStart="20dp"
-                            android:paddingTop="15dp"
-                            android:paddingEnd="20dp"
-                            android:paddingBottom="15dp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/acc_city_edt"
+                    <Button
+                        android:id="@+id/updateProfileButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="City"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/acc_state_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="State"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/acc_nationality_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="Nationality"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
-
+                        android:text="Update Profile"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:onClick="updateProfile"
+                        android:background="@drawable/custom_button_bg"
+                        android:layout_marginTop="16dp" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+            </androidx.cardview.widget.CardView>
 
-                    android:background="@color/gray" />
+            <!-- Feedback Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="16dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="15dp"
-                    >
+                    android:padding="20dp">
 
                     <TextView
-                        android:id="@+id/textView9"
-                        style="@style/account_title"
-                        android:layout_width="match_parent"
+                        android:id="@+id/feedbackTitle"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CONTACT DETAILS" />
+                        android:text="Give Feedback"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
 
-                    <EditText
-                        android:id="@+id/acc_email"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="Email ID"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
-                    <EditText
-                        android:id="@+id/acc_phone_edt"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Enter Your Email"
+                        app:boxStrokeColor="#FF6D00"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/enterEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="Mobile Number"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
-                    <EditText
-                        android:id="@+id/acc_address"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Enter Movie Name"
+                        app:boxStrokeColor="#FF6D00"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/enterMovie"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/custom_edit_text"
-                        android:ems="10"
-                        android:hint="Address"
-                        android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingTop="15dp"
-                        android:paddingEnd="20dp"
-                        android:paddingBottom="15dp"
-                        android:textStyle="bold" />
+                        android:layout_marginBottom="12dp"
+                        android:hint="Write your feedback..."
+
+                        app:boxStrokeColor="#FF6D00">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextFeedback"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minLines="4"
+                            android:gravity="top"
+                            android:inputType="textMultiLine" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/submitFeedbackButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Submit Feedback"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:background="@drawable/custom_button_bg" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+            </androidx.cardview.widget.CardView>
 
-                    android:background="@color/gray" />
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:background="@drawable/custom_button_bg"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
 
+        </LinearLayout>
+    </ScrollView>
 
-                <Button
-                    android:id="@+id/saveData"
-                    android:text="save Data"
-                    android:background="@drawable/custom_button_bg"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-        </ScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -266,7 +204,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

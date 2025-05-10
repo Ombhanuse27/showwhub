@@ -37,12 +37,18 @@ dependencies {
     implementation libs.material
     implementation libs.firebase.database
     implementation libs.firebase.firestore
+    implementation libs.gridlayout
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     implementation libs.firebase.database.v2010
     implementation libs.picasso
     implementation libs.recyclerview
+    implementation libs.glide
+    annotationProcessor libs.compiler
+    implementation libs.cloudinary.android
+    implementation libs.material.v190
+
 
 
 

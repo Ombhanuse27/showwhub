@@ -1,23 +1,15 @@
-<!-- Example date_item_layout.xml -->
+<!-- date_item.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="50dp"
-    android:layout_height="100dp"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:clickable="true"
-    android:focusable="true"
-    tools:context=".DateAdapter">
+    android:padding="10dp"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/dateTextView"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/dateTextView2"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:text="2024"
-        android:textSize="16sp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#000000" /> <!-- Adjust text color as needed -->
 </LinearLayout>

@@ -61,6 +61,7 @@
         android:layout_below="@id/inputEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:inputType="numberPassword"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:background="@drawable/s1"
         android:fontFamily="@font/alk"
@@ -79,6 +80,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/s1"
         android:fontFamily="@font/alk"
+        android:inputType="numberPassword"
         android:hint="   Confirm Password"
         android:textColor="@color/black" />
 
